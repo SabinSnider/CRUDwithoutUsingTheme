@@ -1,0 +1,35 @@
+﻿
+@model IEnumerable<CRUDwithoutScaff.Models.Student>
+@{
+    ViewBag.Title = "DataList";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Index")
+</p>
+<h2>List</h2>
+
+@if (Model != null)
+{
+    <table cellpadding="10" cellspacing="10" class="table-striped">
+        <tr>
+            <th>Roll</th>
+            <th>Name</th>
+            <th>Gender</th>
+
+        </tr>
+        @foreach (var student in Model)
+        {
+        <tr>
+            <td>@student.RollNo</td>
+            <td>@student.Name</td>
+            <td>@student.Gender</td>
+            <td> 
+                @Html.ActionLink("Edit", "Edit", new { id = student.id }) |
+                @Html.ActionLink("Details", "Details", new { id = student.id }) |
+                @Html.ActionLink("Delete", "DeleteRecord", new { id = student.id })
+            </td>
+        </tr>
+        }
+    </table>
+}
